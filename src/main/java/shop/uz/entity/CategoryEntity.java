@@ -43,4 +43,7 @@ public class CategoryEntity {
     @Column(name = "created_date")
     private LocalDateTime createdDate;
 
+
+    private Boolean visible;
+
 }
