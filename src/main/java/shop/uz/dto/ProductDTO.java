@@ -6,6 +6,7 @@ import lombok.Setter;
 import shop.uz.enums.ProductStatus;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,6 +17,9 @@ public class ProductDTO {
     private String description;
     private Double price;
     private Boolean visible;
+    private List<String> photos;
+    private List<AttachDTO> photosDTO;
+    private List<Integer>categories;
     private ProductStatus productStatus;
     private LocalDateTime createdDate;
 }

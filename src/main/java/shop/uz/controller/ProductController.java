@@ -1,8 +1,12 @@
 package shop.uz.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import shop.uz.dto.ProductDTO;
 import shop.uz.service.ProductService;
 
 @RestController
@@ -10,4 +14,9 @@ import shop.uz.service.ProductService;
 public class ProductController {
     @Autowired
     private ProductService productService;
+
+    @PostMapping
+    public ResponseEntity<?> create(@RequestBody ProductDTO productDTO) {
+        return ResponseEntity.ok(productService.create(productDTO));
+    }
 }
