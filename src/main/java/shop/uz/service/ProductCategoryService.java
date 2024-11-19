@@ -1,9 +1,10 @@
 package shop.uz.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 import shop.uz.entity.ProductCategoryEntity;
+import shop.uz.entity.ProductEntity;
+import shop.uz.exceptions.ResourceNotFoundException;
 import shop.uz.repository.ProductCategoryRepository;
 
 import java.time.LocalDateTime;
@@ -45,5 +46,13 @@ public class ProductCategoryService {
 
     public List<Integer> getCategories(Integer id) {
         return productCategoryRepository.findAllByProductId(id);
+    }
+
+    public List<ProductEntity> getProducts(Integer parentId) {
+        List<ProductEntity> entities = productCategoryRepository.getProducts(parentId);
+        if(entities.isEmpty()){
+            throw new ResourceNotFoundException("Products not exists");
+        }
+        return entities;
     }
 }

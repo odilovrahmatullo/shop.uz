@@ -8,6 +8,7 @@ import shop.uz.enums.ProductStatus;
 import shop.uz.repository.ProductRepository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class ProductService {
@@ -47,5 +48,14 @@ public class ProductService {
         dto.setPhotosDTO(productAttachService.getPhotos(entity.getId()));
         return dto;
 
+    }
+
+    public Object getProductsByCategory(Integer parentId) {
+        List<ProductEntity> productEntities = productCategoryService.getProducts(parentId);
+        return productEntities.stream().map(item -> toDTO(item)).toList();
+    }
+
+    public void delete(Integer productId) {
+         productRepository.deleteProduct(productId);
     }
 }

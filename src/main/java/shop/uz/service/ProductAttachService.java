@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import shop.uz.dto.AttachDTO;
 import shop.uz.entity.ProductAttachEntity;
-import shop.uz.entity.ProductCategoryEntity;
 import shop.uz.repository.ProductAttachRepository;
 
 import java.time.LocalDateTime;
